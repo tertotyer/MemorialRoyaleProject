@@ -1,0 +1,36 @@
+﻿@model List<MemorialRoyaleProject.Models.Memorial>
+
+@{
+    ViewData["Title"] = "Галерея памятников";
+}
+<div class="text-center">
+    @if(User.IsInRole("Admin"))
+    {
+        <a class="btn btn-success btn-sm" asp-action="Create">Add new memorial</a>
+    }
+</div>
+
+<div class="row" style="margin-bottom: 50px;">
+    @foreach (var memorial in Model)
+    {
+        var photoPath = "~/images/memorials/" + (memorial.ImagePath ?? "no_image.jpg");
+        <div class="m-3 border-0" style="min-width: 18rem; max-width:30.5%;">
+            <div class="card-header">
+                <h4>Памятник модель @memorial.Model</h4>
+            </div>
+
+            <img class="card-img-top" src="@photoPath" asp-append-version="true" />
+
+            <div class="card-footer">
+                <p>Размер стеллы: <span>@memorial.Proportion</span></p>
+                <p>Гранит: <span>@memorial.Granite</span></p>
+                <p>Комплект: <span>@memorial.Nabor</span></p>
+                @if(User.IsInRole("Admin"))
+                {
+                    <a class="btn btn-primary btn-sm" style="opacity: .8 !important;" asp-action="Edit" asp-route-id="@memorial.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" style="opacity: .8 !important;" asp-action="Delete" asp-route-id="@memorial.Id">Delete</a>
+                }
+            </div>
+        </div>
+    }
+</div>
