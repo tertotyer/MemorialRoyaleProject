@@ -3,7 +3,7 @@
 ## General info
 This project is designed for an organization that creates memorials.
 <p>URL: http://memorialroyal.by </p>
-<p>Hosted by https://www.smarterasp.net </p>
+<p>Host: https://www.smarterasp.net </p>
 Domain: https://hoster.by
 
 ## Technologies
